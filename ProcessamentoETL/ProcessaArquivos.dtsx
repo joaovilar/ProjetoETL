@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="ProcessaArquivos"
   DTS:PackageType="5"
-  DTS:VersionBuild="99"
-  DTS:VersionGUID="{50D9F675-69C9-49E2-8FB1-A3A7BD65FF26}">
+  DTS:VersionBuild="100"
+  DTS:VersionGUID="{035B6078-6410-4377-BC2F-CCCCA8929FA1}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -346,6 +346,275 @@
                       <externalMetadataColumns />
                     </output>
                   </outputs>
+                </component>
+                <component
+                  refId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Grava no destino os arquivos"
+                  componentClassID="Microsoft.SQLServerDestination"
+                  contactInfo="Destino do SQL Server;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation;  Todos os Direitos Reservados; http://www.microsoft.com/sql/support;5"
+                  description="Destino do SQL Server"
+                  name="Grava no destino os arquivos"
+                  version="5">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a página de código de coluna a ser usada quando não há informações de página de código disponíveis a partir da fonte de dados."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forca o uso do valor da propriedade DefaultCodePage durante a descrição dos dados de caractere."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.String"
+                      description="O nome do objeto de banco de dados no qual copiar dados."
+                      expressionType="Notify"
+                      name="BulkInsertTableName">[dbo].[TB_PRODUTOS]</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Especifica que qualquer restrição no objeto de destino será verificada durante a operação de cópia de dados. Corresponde a opção de inserção em massa CHECK_CONSTRAINTS."
+                      name="BulkInsertCheckConstraints">true</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o número da primeira linha a ser copiada. Corresponde à opção de inserção em massa FIRSTROW."
+                      expressionType="Notify"
+                      name="BulkInsertFirstRow">-1</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Especifica que qualquer disparador de inserção definido no objeto de destino será executado durante a cópia de dados. Corresponde à opção de inserção em massa FIRE_TRIGGERS."
+                      name="BulkInsertFireTriggers">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se os valores fornecidos para colunas de identidade serão copiados no destino. Se false, os valores para colunas de identidade serão gerados automaticamente no destino. Corresponde à opção de inserção em massa KEEPIDENTITY."
+                      name="BulkInsertKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indica se as colunas que contêm null terão null copiado no destino. Se false, as colunas que contêm null terão seus valores padrão inseridos no destino. Aplicável somente se o carregamento rápido estiver ativado."
+                      name="BulkInsertKeepNulls">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o número da última linha a ser copiada. Corresponde à opção de inserção em massa LASTROW."
+                      expressionType="Notify"
+                      name="BulkInsertLastRow">-1</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica o número máximo de erros de sintaxe e erros de compilação que podem ocorrer antes do cancelamento da operação de cópia de dados. Cada linha que não puder ser copiada será ignorada e contada como um erro. Corresponde à opção de inserção em massa MAXERRORS."
+                      name="BulkInsertMaxErrors">-1</property>
+                    <property
+                      dataType="System.String"
+                      description="Especifica como os dados a serem copiados estão classificados. Corresponde à opção de inserção em massa ORDER."
+                      expressionType="Notify"
+                      name="BulkInsertOrder"></property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Especifica que um bloqueio de nível de tabela é adquirido para a duração da operação de cópia de dados. Corresponde à opção de inserção em massa TABLOCK."
+                      name="BulkInsertTablock">true</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica a quantidade de tempo em segundos que o adaptador de Destino SQL aguardará antes de encerrar se não houver dados disponíveis para inserção. Um valor de tempo limite de 0 significa que o adaptador de Destino SQL não terá tempo limite."
+                      expressionType="Notify"
+                      name="Timeout">30</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Especifica quando confirmações são emitidas durante a inserção de dados. Um valor de 0 especifica que uma confirmação será emitida ao final da inserção dos dados."
+                      name="MaxInsertCommitSize">0</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Grava no destino os arquivos.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.DataSQL]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.DataSQL]"
+                      description="A conexão de tempo de execução OLE DB usada para acessar o banco de dados."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Grava no destino os arquivos.Inputs[Entrada de Destino do SQL Server]"
+                      hasSideEffects="true"
+                      name="Entrada de Destino do SQL Server">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Grava no destino os arquivos.Inputs[Entrada de Destino do SQL Server].Columns[ID-Produto]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="ID-Produto"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Grava no destino os arquivos.Inputs[Entrada de Destino do SQL Server].ExternalColumns[ID-Produto]"
+                          lineageId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Origem de Arquivo Simples.Outputs[Saída de Origem de Arquivo Simples].Columns[ID-Produto]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Grava no destino os arquivos.Inputs[Entrada de Destino do SQL Server].Columns[Produto]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Produto"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Grava no destino os arquivos.Inputs[Entrada de Destino do SQL Server].ExternalColumns[Produto]"
+                          lineageId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Origem de Arquivo Simples.Outputs[Saída de Origem de Arquivo Simples].Columns[Produto]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Grava no destino os arquivos.Inputs[Entrada de Destino do SQL Server].Columns[Categoria]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Categoria"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Grava no destino os arquivos.Inputs[Entrada de Destino do SQL Server].ExternalColumns[Categoria]"
+                          lineageId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Origem de Arquivo Simples.Outputs[Saída de Origem de Arquivo Simples].Columns[Categoria]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Grava no destino os arquivos.Inputs[Entrada de Destino do SQL Server].Columns[Segmento]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Segmento"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Grava no destino os arquivos.Inputs[Entrada de Destino do SQL Server].ExternalColumns[Segmento]"
+                          lineageId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Origem de Arquivo Simples.Outputs[Saída de Origem de Arquivo Simples].Columns[Segmento]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Grava no destino os arquivos.Inputs[Entrada de Destino do SQL Server].Columns[Fabricante]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Fabricante"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Grava no destino os arquivos.Inputs[Entrada de Destino do SQL Server].ExternalColumns[Fabricante]"
+                          lineageId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Origem de Arquivo Simples.Outputs[Saída de Origem de Arquivo Simples].Columns[Fabricante]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Grava no destino os arquivos.Inputs[Entrada de Destino do SQL Server].Columns[Loja]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Loja"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Grava no destino os arquivos.Inputs[Entrada de Destino do SQL Server].ExternalColumns[Loja]"
+                          lineageId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Origem de Arquivo Simples.Outputs[Saída de Origem de Arquivo Simples].Columns[Loja]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Grava no destino os arquivos.Inputs[Entrada de Destino do SQL Server].Columns[Cidade]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Cidade"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Grava no destino os arquivos.Inputs[Entrada de Destino do SQL Server].ExternalColumns[Cidade]"
+                          lineageId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Origem de Arquivo Simples.Outputs[Saída de Origem de Arquivo Simples].Columns[Cidade]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Grava no destino os arquivos.Inputs[Entrada de Destino do SQL Server].Columns[Estado]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Estado"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Grava no destino os arquivos.Inputs[Entrada de Destino do SQL Server].ExternalColumns[Estado]"
+                          lineageId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Origem de Arquivo Simples.Outputs[Saída de Origem de Arquivo Simples].Columns[Estado]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Grava no destino os arquivos.Inputs[Entrada de Destino do SQL Server].Columns[Vendedor]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Vendedor"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Grava no destino os arquivos.Inputs[Entrada de Destino do SQL Server].ExternalColumns[Vendedor]"
+                          lineageId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Origem de Arquivo Simples.Outputs[Saída de Origem de Arquivo Simples].Columns[Vendedor]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Grava no destino os arquivos.Inputs[Entrada de Destino do SQL Server].Columns[ID-Vendedor]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="ID-Vendedor"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Grava no destino os arquivos.Inputs[Entrada de Destino do SQL Server].ExternalColumns[ID-Vendedor]"
+                          lineageId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Origem de Arquivo Simples.Outputs[Saída de Origem de Arquivo Simples].Columns[ID-Vendedor]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Grava no destino os arquivos.Inputs[Entrada de Destino do SQL Server].Columns[Data Venda]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Data Venda"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Grava no destino os arquivos.Inputs[Entrada de Destino do SQL Server].ExternalColumns[Data Venda]"
+                          lineageId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Origem de Arquivo Simples.Outputs[Saída de Origem de Arquivo Simples].Columns[Data Venda]" />
+                        <inputColumn
+                          refId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Grava no destino os arquivos.Inputs[Entrada de Destino do SQL Server].Columns[ValorVenda]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="ValorVenda"
+                          externalMetadataColumnId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Grava no destino os arquivos.Inputs[Entrada de Destino do SQL Server].ExternalColumns[ValorVenda]"
+                          lineageId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Origem de Arquivo Simples.Outputs[Saída de Origem de Arquivo Simples].Columns[ValorVenda]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Grava no destino os arquivos.Inputs[Entrada de Destino do SQL Server].ExternalColumns[Id]"
+                          dataType="i4"
+                          name="Id" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Grava no destino os arquivos.Inputs[Entrada de Destino do SQL Server].ExternalColumns[ID-Produto]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ID-Produto" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Grava no destino os arquivos.Inputs[Entrada de Destino do SQL Server].ExternalColumns[Produto]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Produto" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Grava no destino os arquivos.Inputs[Entrada de Destino do SQL Server].ExternalColumns[Categoria]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Categoria" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Grava no destino os arquivos.Inputs[Entrada de Destino do SQL Server].ExternalColumns[Segmento]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Segmento" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Grava no destino os arquivos.Inputs[Entrada de Destino do SQL Server].ExternalColumns[Fabricante]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Fabricante" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Grava no destino os arquivos.Inputs[Entrada de Destino do SQL Server].ExternalColumns[Loja]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Loja" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Grava no destino os arquivos.Inputs[Entrada de Destino do SQL Server].ExternalColumns[Cidade]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Cidade" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Grava no destino os arquivos.Inputs[Entrada de Destino do SQL Server].ExternalColumns[Estado]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Estado" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Grava no destino os arquivos.Inputs[Entrada de Destino do SQL Server].ExternalColumns[Vendedor]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Vendedor" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Grava no destino os arquivos.Inputs[Entrada de Destino do SQL Server].ExternalColumns[ID-Vendedor]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ID-Vendedor" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Grava no destino os arquivos.Inputs[Entrada de Destino do SQL Server].ExternalColumns[Data Venda]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Data Venda" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Grava no destino os arquivos.Inputs[Entrada de Destino do SQL Server].ExternalColumns[ValorVenda]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ValorVenda" />
+                        <externalMetadataColumn
+                          refId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Grava no destino os arquivos.Inputs[Entrada de Destino do SQL Server].ExternalColumns[NomeArquivo]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="NomeArquivo" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
                 </component>
                 <component
                   refId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Origem de Arquivo Simples"
@@ -751,6 +1020,11 @@
               </components>
               <paths>
                 <path
+                  refId="Package\Foreach Loop Container\Tarefa Fluxo de Dados.Paths[Saída de Coluna Derivada]"
+                  endId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Grava no destino os arquivos.Inputs[Entrada de Destino do SQL Server]"
+                  name="Saída de Coluna Derivada"
+                  startId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Coluna Derivada.Outputs[Saída de Coluna Derivada]" />
+                <path
                   refId="Package\Foreach Loop Container\Tarefa Fluxo de Dados.Paths[Saída de Origem de Arquivo Simples]"
                   endId="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Coluna Derivada.Inputs[Entrada de Coluna Derivada]"
                   name="Saída de Origem de Arquivo Simples"
@@ -836,7 +1110,7 @@
     design-time-name="Package\Foreach Loop Container\Tarefa Fluxo de Dados">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="206,42"
           Id="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Origem de Arquivo Simples"
@@ -867,8 +1141,42 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="216,42"
+          Id="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Grava no destino os arquivos"
+          TopLeft="266,191" />
+        <EdgeLayout
+          Id="Package\Foreach Loop Container\Tarefa Fluxo de Dados.Paths[Saída de Coluna Derivada]"
+          TopLeft="371.5,133">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,58"
+              Start="0,0"
+              End="0,50.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Foreach Loop Container\Tarefa Fluxo de Dados\Grava no destino os arquivos">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
 </Objects>]]></DTS:DesignTimeProperties>
 </DTS:Executable>
